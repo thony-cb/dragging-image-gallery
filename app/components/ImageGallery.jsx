@@ -24,10 +24,12 @@ export default function ImageGallery() {
   const swipeToImage = (swipeDirection) => {
     setImageCount([imageCount + swipeDirection, swipeDirection]);
   };
-
+  // Pulling to the right is positive
+  //Pulling to the left is negative
   //Define a threshold and if the drag exceeds then we swipe
   const dragEndHandler = (dragInfo) => {
-    console.log(dragInfo);
+    //You can see more details on dragInfo
+    // console.log(dragInfo.offset.x);
     const draggedDistance = dragInfo.offset.x;
     const swipeThreshold = 50;
     if (draggedDistance > swipeThreshold) {
@@ -173,11 +175,13 @@ const ImageGalleryPhotos = [
 ];
 const sliderVariants = {
   incoming: (direction) => ({
+    //if the direction is from the right
     x: direction > 0 ? "100%" : "-100%",
     scale: 1.2,
     opacity: 0,
   }),
   active: { x: 0, scale: 1, opacity: 1 },
+  //if the direction is from the right
   exit: (direction) => ({
     x: direction > 0 ? "-100%" : "100%",
     scale: 1,
